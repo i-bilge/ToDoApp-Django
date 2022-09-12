@@ -11,3 +11,4 @@ from .models import Task
 # classbased
 class TaskList(ListView):
     model = Task
+    context_object_name = 'task'
