@@ -1,6 +1,13 @@
+import imp
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic.list import ListView
+from .models import Task
 
-# Create your views here.
-def home(request):
-    return HttpResponse("Working")
+# # functionbased
+# def home(request):
+#     return HttpResponse("Working")
+
+# classbased
+class TaskList(ListView):
+    model = Task
