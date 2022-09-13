@@ -9,5 +9,5 @@ urlpatterns = [
     path('task-update/<int:pk>/', TaskUpdate.as_view(), name= 'tasks-update'),
     path('task-delete/<int:pk>/', TaskDelete.as_view(), name= 'tasks-delete'),
     path('login/', CustomLoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
 ]
