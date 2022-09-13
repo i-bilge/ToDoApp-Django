@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.list import ListView
@@ -17,6 +18,13 @@ from django.urls import reverse_lazy
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'task'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['task'] = context['task'].filter(user=self.request.user)
+        context['count'] = context['task'].filter(complete=False).count()
+        return context
+
 class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
     context_object_name = 'task'

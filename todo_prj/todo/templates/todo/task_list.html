@@ -24,6 +24,6 @@
     </tr>   
     {% empty %}
     <h3>No items in list</h3>
-    <a href="">Add New Item</a>
+    <a href="{% url 'task-create' %}">Add New Item</a>
     {% endfor %}
 </table>
